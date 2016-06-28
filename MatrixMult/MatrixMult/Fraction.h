@@ -17,6 +17,7 @@ public:
   Fraction();
   Fraction(int n, int d);
   Fraction(Fraction f);
+  Fraction(string s);
   
   bool operator==(Fraction f);
   Fraction operator=(Fraction f);
