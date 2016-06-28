@@ -18,7 +18,7 @@ DEFAULT_DEN = 1;
 Fraction::Fraction()
 {
   numerator = DEFAULT_NUM;
-  denominator = 1;
+  denominator = DEFAULT_DEN;
 }
 
 Fraction::Fraction(int n, int d)
@@ -31,6 +31,36 @@ Fraction::Fraction(Fraction f)
 {
   numerator = f.numerator;
   denominator = f.denominator;
+}
+
+Fraction::Fraction(string s)
+{
+  numerator = DEFAULT_NUM;
+  denominator = DEFAULT_DEN;
+  bool stillNum = true;
+  char ary[10];
+  int slashIndex = -1;
+  
+  for (int i = 0; i < s.length(); i++)
+  {
+    if (s.at(i) == '/')
+    {
+     stillNum=false;
+     slashIndex = i;
+     numerator = atoi(ary);
+     for (int j = 0; j < 10; j++)
+      ary[j] = '0';
+    }
+    else if (s.at(i) == ' ')
+    {
+     break;
+    }
+    else if (stillNum)
+     ary[i] = s[i];
+    else
+     ary[i-slashIndex] = s[i];
+  }
+  denominator = atoi(ary);
 }
 
 
